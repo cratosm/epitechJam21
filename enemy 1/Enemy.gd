@@ -16,7 +16,7 @@ func _physics_process(delta):
 		$AnimatedSprite.flip_h = false
 	else:
 		$AnimatedSprite.flip_h = true
-	$AnimatedSprite.play("walk")
+	$AnimatedSprite.play("Run")
 	velocity.y += GRAVITY
 	velocity = move_and_slide(velocity, FLOOR)
 	if is_on_wall():
