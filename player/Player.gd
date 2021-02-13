@@ -1,7 +1,7 @@
 extends KinematicBody2D
 #GRAVITY
 const UP = Vector2(0, -1)
-export(int) var hp = 10
+export(int) var hp = 1
 const GRAVITY = 20
 #RUN
 const MAX_SPEED = 500
@@ -27,6 +27,7 @@ var MonkeyRun = "RunMonkey"
 var MonkeyHit = "HitMonkey"
 var MonkeyJump = "JumpMonkey"
 var MonkeyFall = "JumpMonkey"
+var MonkeyDie = "DieMonkey"
 var FuturIdle = "IdleFutur"
 var FuturRun = "RunFutur"
 var FuturyHit = "HitFutur"
@@ -51,7 +52,7 @@ func monkeyMode():
 	Fall = MonkeyFall
 	Idle = MonkeyIdle
 	Run = MonkeyRun
-	#Die
+	Die = MonkeyDie
 	Idle_and_Shoot = MonkeyHit
 	Run_and_Shoot = MonkeyHit
 	Jump_and_Shoot = MonkeyHit
@@ -152,6 +153,8 @@ func manageJump():#JUMP
 	pass
 
 func _physics_process(delta):#MAIN
+	if (is_dead == true):
+		return
 	monkeyMode()
 	motion.y += GRAVITY
 	posTarget = $Position2D
