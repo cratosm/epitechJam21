@@ -25,20 +25,6 @@
 [ext_resource path="res://Sprites/monkey/RunMonkey3.png" type="Texture" id=23]
 [ext_resource path="res://Sprites/monkey/IdleMonkey6.png" type="Texture" id=24]
 [ext_resource path="res://UI/Healthbar/HealthBar.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Sprites/Futur/FuturJump2.png" type="Texture" id=25]
-[ext_resource path="res://Sprites/Futur/FuturRun2.png" type="Texture" id=26]
-[ext_resource path="res://Sprites/Futur/FuturRun1.png" type="Texture" id=27]
-[ext_resource path="res://Sprites/Futur/FuturIdle2.png" type="Texture" id=28]
-[ext_resource path="res://Sprites/Futur/FuturJump1.png" type="Texture" id=29]
-[ext_resource path="res://Sprites/Futur/FuturRun6.png" type="Texture" id=30]
-[ext_resource path="res://Sprites/Futur/FuturRun4.png" type="Texture" id=31]
-[ext_resource path="res://Sprites/Futur/FuturDie.png" type="Texture" id=32]
-[ext_resource path="res://Sprites/Futur/FuturIdle1.png" type="Texture" id=33]
-[ext_resource path="res://Sprites/Futur/FuturRun3.png" type="Texture" id=34]
-[ext_resource path="res://Sprites/Futur/FuturRun5.png" type="Texture" id=35]
-[ext_resource path="res://Sprites/monkey/DieMonkey.png" type="Texture" id=36]
-[ext_resource path="res://Sprites/Futur/FuturHitIdle.png" type="Texture" id=37]
-[ext_resource path="res://Sprites/Futur/FuturHitJump.png" type="Texture" id=38]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -72,17 +58,7 @@ animations = [ {
 "name": "JumpFutur",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 37 ) ],
-"loop": true,
-"name": "HitFuturIdle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 38 ) ],
-"loop": true,
-"name": "HitFuturJump",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 32 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 23 ) ],
 "loop": true,
 "name": "RunMonkey",
 "speed": 8.0
@@ -134,7 +110,6 @@ script = ExtResource( 10 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "HitFuturIdle"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
