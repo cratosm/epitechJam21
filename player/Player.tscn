@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Sprites/Player/Run2.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Player/Idle0.png" type="Texture" id=2]
@@ -11,9 +11,42 @@
 [ext_resource path="res://Sprites/Player/Run1.png" type="Texture" id=9]
 [ext_resource path="res://Player/Player.gd" type="Script" id=10]
 [ext_resource path="res://Sprites/Player/Shoot.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/monkey/HitMonkey1.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/monkey/HitMonkey2.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/monkey/IdleMonkey3.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/monkey/IdleMonkey0.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/monkey/IdleMonkey1.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/monkey/IdleMonkey2.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/monkey/IdleMonkey5.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/monkey/RunMonkey1.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/monkey/IdleMonkey4.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/monkey/HitMonkey3.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/monkey/RunMonkey2.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/monkey/RunMonkey3.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/monkey/IdleMonkey6.png" type="Texture" id=24]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 14 ), ExtResource( 20 ), ExtResource( 18 ), ExtResource( 24 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "IdleMonkey",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "HitMonkey",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ) ],
+"loop": true,
+"name": "JumpMonkey",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "RunMonkey",
+"speed": 8.0
+}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "Idle",
@@ -24,14 +57,14 @@ animations = [ {
 "name": "Run",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "Fall",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Fall",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 11 ) ],
@@ -44,6 +77,9 @@ animations = [ {
 radius = 16.0
 height = 32.0
 
+[sub_resource type="CircleShape2D" id=3]
+radius = 26.6539
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 10 )
 __meta__ = {
@@ -52,7 +88,7 @@ __meta__ = {
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "Idle and Shoot"
+animation = "JumpMonkey"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -65,3 +101,7 @@ drag_margin_v_enabled = true
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( -50.9419, 15.1301 )
+
+[node name="CollisionShape2DMonkey" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+disabled = true

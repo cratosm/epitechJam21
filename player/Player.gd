@@ -21,6 +21,11 @@ const MAXSTACK = 20
 var Dead = "Dead"
 var Run = "Run"
 var Idle = "Idle"
+var MonkeyIdle = "IdleMonkey"
+var MonkeyRun = "RunMonkey"
+var MonkeyHit = "HitMonkey"
+var MonkeyJump = "JumpMonkey"
+var MonkeyFall = "JumpMonkey"
 var Jump = "Jump"
 var Fall = "Fall"
 var Die = "Die"
@@ -29,7 +34,24 @@ var Run_and_Shoot = "Idle and Shoot"
 var Jump_and_Shoot = "Idle and Shoot"
 var buffer = ""
 var max_speed = 290
+var monkey = false
 
+func monkeyMode():
+	if (monkey == true):
+		return
+	Jump = MonkeyJump
+	Fall = MonkeyFall
+	Idle = MonkeyIdle
+	Run = MonkeyRun
+	#Die
+	Idle_and_Shoot = MonkeyHit
+	Run_and_Shoot = MonkeyHit
+	Jump_and_Shoot = MonkeyHit
+	$CollisionShape2D.set_deferred("disabled", true)
+	$CollisionShape2DMonkey.set_deferred("disabled", false)
+	$Position2D.position.y -= 13
+	monkey = true
+	
 func manageShoot():
 	if fireball_power == 1:
 		fireball = FIREBALL.instance()
@@ -39,6 +61,8 @@ func manageShoot():
 		fireball.set_fireball_direction(1)
 	else:
 		fireball.set_fireball_direction(-1)
+	if (monkey == true):
+		fireball.MonkeyAttack()
 	get_parent().add_child(fireball)
 	fireball.position =  posTarget.global_position
 	pass
@@ -48,8 +72,6 @@ func manageRun():#RUN
 		$Sprite.flip_h = true
 		if sign(posTarget.position.x) == -1:
 			posTarget.position.x *= -1
-			$Sprite/Cac/hitboxCac.position.x *= -1
-			$Sprite/Cac/PositionArm.position.x *= -1
 		stack = MAXSTACK
 		buffer = Run_and_Shoot
 		manageShoot()
@@ -112,6 +134,7 @@ func manageJump():#JUMP
 	pass
 
 func _physics_process(delta):#MAIN
+	monkeyMode()
 	motion.y += GRAVITY
 	posTarget = $Position2D
 	manageRun()

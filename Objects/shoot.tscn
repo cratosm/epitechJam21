@@ -1,30 +1,41 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Objects/shoot.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/fireballNormal/nes-sprite-png-7.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/monkey/banana2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/monkey/banana4.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/monkey/banana5.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/monkey/banana3.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/monkey/banana6.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/monkey/banana1.png" type="Texture" id=8]
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 203, 44, 29 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=2]
 region = Rect2( 168, 208, 24, 16 )
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ SubResource( 8 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "fireMonkey",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 1 ) ],
 "loop": true,
 "name": "fire",
 "speed": 13.0
 }, {
-"frames": [ SubResource( 5 ) ],
+"frames": [ SubResource( 2 ) ],
 "loop": true,
 "name": "die",
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 8.92601, 5.34616 )
 
 [node name="shoot" type="Area2D"]
@@ -36,11 +47,11 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -7, 0 )
-frames = SubResource( 6 )
-animation = "fire"
+frames = SubResource( 3 )
+animation = "fireMonkey"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 7 )
+shape = SubResource( 4 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 [connection signal="body_entered" from="." to="." method="_on_shoot_body_entered"]
