@@ -1,7 +1,8 @@
 extends KinematicBody2D
 #GRAVITY
 const UP = Vector2(0, -1)
-export(int) var hp = 1
+export(int) var hp = 100
+export(int) var max_health = 100
 const GRAVITY = 20
 #RUN
 const MAX_SPEED = 500
@@ -78,6 +79,7 @@ func manageShoot():
 
 func damage(dmg):#TAKE DMG
 	hp -= dmg
+	$HpBar.set_percent_value_int(float(hp)/max_health * 100)
 	if hp < 1:
 		is_dead = true
 		motion = Vector2(0, 0)
