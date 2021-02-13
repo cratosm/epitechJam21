@@ -1,70 +1,27 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Portal/portal.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Player/Run2.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Player/Run1.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Player/Run3.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Player/Run4.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Player/Run0.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Player/Run7.png" type="Texture" id=8]
-[ext_resource path="res://enemy 1/Enemy 1.gd" type="Script" id=9]
+[ext_resource path="res://Objects/Alien.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 284.936, 10 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 16.3696, 138.059 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 23.9189, 29.2043 )
-
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-} ]
+extents = Vector2( 383.3, 10 )
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -71.8155, -1.88988 )
+position = Vector2( 2.7018, -2.16144 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D"]
-position = Vector2( 144.103, 63.2179 )
-scale = Vector2( 16.4385, 1 )
+position = Vector2( 159.654, 63.2179 )
+scale = Vector2( 17.4105, 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 138.057, 57.1546 )
+position = Vector2( 138.273, 57.589 )
 shape = SubResource( 1 )
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D2"]
-position = Vector2( 365.428, -61.2329 )
-rotation = 1.5708
-scale = Vector2( 8.61614, 1 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2( 365.574, -60.8112 )
-shape = SubResource( 4 )
-
-[node name="Enemy 1" type="KinematicBody2D" parent="."]
-position = Vector2( 197.178, -1.88989 )
-script = ExtResource( 9 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy 1"]
-position = Vector2( 1.25995, 1.88989 )
-shape = SubResource( 3 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Enemy 1"]
-position = Vector2( 1.57482, 2.20487 )
-scale = Vector2( 0.97047, 1.00984 )
-frames = SubResource( 2 )
-animation = "walk"
+[node name="Alien" parent="." instance=ExtResource( 3 )]
+position = Vector2( 334.983, -5.86723 )
