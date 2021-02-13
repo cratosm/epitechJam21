@@ -20,6 +20,7 @@ func dead(damage):
 	if hp <= 0:
 		is_dead = true
 		velocity = Vector2(0,0)
+		scale = Vector2(3.5, 3.5)
 		$AnimatedSprite.play("die")
 		$CollisionShape2D.set_deferred("disabled", true)
 		$Timer.start()
