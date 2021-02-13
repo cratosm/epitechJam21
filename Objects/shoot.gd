@@ -6,11 +6,16 @@ var fire = "fire"
 var die = "die"
 
 func _ready():
-
 	pass 
 
 func MonkeyAttack():
 	fire = "fireMonkey"
+
+func AttackModern():
+	fire = "fire"
+
+func AttackFutur():
+	fire = "fireFutur"
 
 func set_fireball_direction(dir):
 	direction = dir
