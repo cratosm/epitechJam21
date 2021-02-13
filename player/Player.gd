@@ -4,6 +4,7 @@ const UP = Vector2(0, -1)
 export(int) var hp = 100
 export(int) var max_health = 100
 const GRAVITY = 20
+export(int) var score = 0
 #RUN
 const MAX_SPEED = 500
 const ACCELERATION = 50
@@ -187,3 +188,9 @@ func _physics_process(delta):#MAIN
 	manageJump()
 	motion = move_and_slide(motion, UP)
 	pass
+
+
+func _on_Area2D_body_entered(body):
+	score += 1
+	print_debug(score)
+	pass # Replace with function body.
