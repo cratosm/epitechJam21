@@ -190,7 +190,8 @@ func _physics_process(delta):#MAIN
 	pass
 
 
-func _on_Area2D_body_entered(body):
+
+func _on_coin_body_entered(body):
 	score += 1
 	print_debug(score)
 	pass # Replace with function body.

@@ -27,6 +27,14 @@ shape = SubResource( 1 )
 [node name="Alien" parent="." instance=ExtResource( 3 )]
 position = Vector2( 334.983, -5.86723 )
 
-[node name="Area2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( -148, -13 )
-[connection signal="body_entered" from="Area2D" to="Player" method="_on_Area2D_body_entered"]
+[node name="coin" parent="." instance=ExtResource( 4 )]
+position = Vector2( 147.5, -66 )
+
+[node name="coin2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 233, -66.5 )
+
+[node name="coin3" parent="." instance=ExtResource( 4 )]
+position = Vector2( -159, -52 )
+[connection signal="body_entered" from="coin" to="Player" method="_on_coin_body_entered"]
+[connection signal="body_entered" from="coin2" to="Player" method="_on_coin_body_entered"]
+[connection signal="body_entered" from="coin3" to="Player" method="_on_coin_body_entered"]
