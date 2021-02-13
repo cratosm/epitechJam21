@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Font/Lets Espresso.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/Start.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+use_filter = true
+font_data = ExtResource( 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -46.5
+margin_top = 93.1644
+margin_right = 46.5
+margin_bottom = 118.164
+rect_scale = Vector2( 1.873, 2.14038 )
+custom_fonts/font = SubResource( 1 )
+text = "Main Menu"
+
+[node name="Button" type="Button" parent="ColorRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -10.4898
+margin_top = 237.962
+margin_right = 39.7289
+margin_bottom = 271.962
+rect_scale = Vector2( 1.9031, 1.9031 )
+custom_fonts/font = SubResource( 2 )
+text = "Play"
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_Button_pressed"]
