@@ -1,6 +1,7 @@
 extends KinematicBody2D
 #GRAVITY
 const UP = Vector2(0, -1)
+export(int) var hp = 10
 const GRAVITY = 20
 #RUN
 const MAX_SPEED = 500
@@ -26,6 +27,12 @@ var MonkeyRun = "RunMonkey"
 var MonkeyHit = "HitMonkey"
 var MonkeyJump = "JumpMonkey"
 var MonkeyFall = "JumpMonkey"
+var FuturIdle = "IdleFutur"
+var FuturRun = "RunFutur"
+var FuturyHit = "HitFutur"
+var FuturJump = "JumpFutur"
+var FuturFall = "JumpFutur"
+var FuturDie = "JumpFutur"
 var Jump = "Jump"
 var Fall = "Fall"
 var Die = "Die"
@@ -35,6 +42,7 @@ var Jump_and_Shoot = "Idle and Shoot"
 var buffer = ""
 var max_speed = 290
 var monkey = false
+var is_dead = false
 
 func monkeyMode():
 	if (monkey == true):
@@ -65,6 +73,16 @@ func manageShoot():
 		fireball.MonkeyAttack()
 	get_parent().add_child(fireball)
 	fireball.position =  posTarget.global_position
+	pass
+
+func damage(dmg):#TAKE DMG
+	hp -= dmg
+	if hp < 1:
+		is_dead = true
+		motion = Vector2(0, 0)
+		$Sprite.play(Die)
+	else:
+		$Sprite.play(Fall)
 	pass
 
 func manageRun():#RUN

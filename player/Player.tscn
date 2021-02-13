@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Sprites/Player/Run2.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Player/Idle0.png" type="Texture" id=2]
@@ -24,6 +24,17 @@
 [ext_resource path="res://Sprites/monkey/RunMonkey2.png" type="Texture" id=22]
 [ext_resource path="res://Sprites/monkey/RunMonkey3.png" type="Texture" id=23]
 [ext_resource path="res://Sprites/monkey/IdleMonkey6.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/Futur/FuturJump2.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Futur/FuturRun2.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/Futur/FuturRun1.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/Futur/FuturIdle2.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/Futur/FuturJump1.png" type="Texture" id=29]
+[ext_resource path="res://Sprites/Futur/FuturRun6.png" type="Texture" id=30]
+[ext_resource path="res://Sprites/Futur/FuturRun4.png" type="Texture" id=31]
+[ext_resource path="res://Sprites/Futur/FuturDie.png" type="Texture" id=32]
+[ext_resource path="res://Sprites/Futur/FuturIdle1.png" type="Texture" id=33]
+[ext_resource path="res://Sprites/Futur/FuturRun3.png" type="Texture" id=34]
+[ext_resource path="res://Sprites/Futur/FuturRun5.png" type="Texture" id=35]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -46,6 +57,26 @@ animations = [ {
 "loop": true,
 "name": "RunMonkey",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "IdleFutur",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "JumpFutur",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 35 ), ExtResource( 31 ), ExtResource( 34 ), ExtResource( 26 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "RunFutur",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 32 ) ],
+"loop": true,
+"name": "DieFutur",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
@@ -80,15 +111,16 @@ height = 32.0
 [sub_resource type="CircleShape2D" id=3]
 radius = 26.6539
 
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 12.8417
+height = 38.3049
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 10 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "JumpMonkey"
+animation = "DieFutur"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -104,4 +136,9 @@ position = Vector2( -50.9419, 15.1301 )
 
 [node name="CollisionShape2DMonkey" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )
+disabled = true
+
+[node name="CollisionShape2DFutur" type="CollisionShape2D" parent="."]
+position = Vector2( -7.60415, 10.8862 )
+shape = SubResource( 4 )
 disabled = true
