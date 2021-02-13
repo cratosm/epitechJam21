@@ -1,12 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/lvl2_tileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/lvl2_background_tileSet.tres" type="TileSet" id=3]
-[ext_resource path="res://enemy 1/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/military.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/coin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Portal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/ParallaxBackground2.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4573.87, 66.9103 )
 
 [node name="Node2D" type="Node2D"]
+
+[node name="modern" type="Node2D" parent="."]
 
 [node name="bg_blocks" type="TileMap" parent="."]
 scale = Vector2( 0.5, 0.5 )
@@ -23,18 +30,6 @@ tile_data = PoolIntArray( -1376197, 536870912, 0, -1376196, 536870912, 0, -13761
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -7.50195, -8.79895 )
 
-[node name="Enemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2110.28, 11.3461 )
-
-[node name="Enemy2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1831.57, 18.0595 )
-
-[node name="Enemy3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 3528.01, 12.8371 )
-
-[node name="Enemy4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2978.68, 14.7249 )
-
 [node name="coin" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1854.42, -292.673 )
 scale = Vector2( 1.5, 1.5 )
@@ -50,3 +45,47 @@ scale = Vector2( 1.5, 1.5 )
 [node name="coin4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2622.63, 48.9872 )
 scale = Vector2( 1.5, 1.5 )
+
+[node name="military" parent="." instance=ExtResource( 4 )]
+position = Vector2( 485.365, -84.601 )
+hp = 2
+
+[node name="military2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1255.77, 15.6374 )
+speed = 200
+hp = 3
+
+[node name="military3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1946.77, -53.7164 )
+hp = 5
+
+[node name="military4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2957.25, -415.48 )
+speed = 100
+hp = 10
+
+[node name="military5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 3479.05, 7.75241 )
+speed = 180
+hp = 8
+
+[node name="military6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2602.44, -360.474 )
+hp = 5
+
+[node name="military7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2927.65, -233.989 )
+speed = 150
+hp = 3
+
+[node name="Portal" parent="." instance=ExtResource( 6 )]
+position = Vector2( 3728.52, -37.0124 )
+
+[node name="end" type="StaticBody2D" parent="."]
+position = Vector2( 86.0999, 559.466 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="end"]
+position = Vector2( 1729.38, 51.6233 )
+shape = SubResource( 1 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 7 )]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Sprites/Backgrounds/ThirdLevelBackground.png" type="Texture" id=1]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.1, 0.1 )
+
+[node name="Background 2" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( -825.639, -470.457 )
+scale = Vector2( 0.976296, 0.881972 )
+texture = ExtResource( 1 )
+centered = false

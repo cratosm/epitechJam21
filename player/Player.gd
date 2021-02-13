@@ -213,6 +213,10 @@ func setPlayer():
 func _physics_process(delta):#MAIN
 	if (is_dead == true):
 		return
+	if get_slide_count() > 0:
+		for i in range(get_slide_count()):
+			if "end" in get_slide_collision(i).collider.name:
+				print("ed")
 	setPlayer()
 	motion.y += GRAVITY
 	posTarget = $Position2D

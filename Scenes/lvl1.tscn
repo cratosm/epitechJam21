@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/world_tileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://Objects/Trex.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/Portal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/lvl2.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3261.86, 58.1224 )
 
 [node name="lvl1" type="Node2D"]
 
@@ -62,3 +65,9 @@ hp = 3
 position = Vector2( 1601.03, 123.573 )
 speed = 40
 hp = 5
+
+[node name="end" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="end"]
+position = Vector2( 1017.89, 539.402 )
+shape = SubResource( 1 )

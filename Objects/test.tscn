@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scenes/Objects/shoot_enemy.gd" type="Script" id=2]
+[ext_resource path="res://Ressources/Sprites/monstLas/attack/tile000.png" type="Texture" id=3]
+[ext_resource path="res://Ressources/Sprites/monstLas/attack/tile001.png" type="Texture" id=4]
+[ext_resource path="res://Ressources/Sprites/monstLas/attack/tile003.png" type="Texture" id=5]
+[ext_resource path="res://Ressources/Sprites/monstLas/attack/tile002.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 8 )
+
+[sub_resource type="AtlasTexture" id=2]
+region = Rect2( 0, 228, 41, 38 )
+
+[sub_resource type="AtlasTexture" id=3]
+region = Rect2( 41, 228, 41, 38 )
+
+[sub_resource type="AtlasTexture" id=4]
+region = Rect2( 140, 228, 35, 38 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "fire",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "fire2",
+"speed": 5.0
+} ]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -4, 5.96046e-08 )
+scale = Vector2( 2.8, 0.8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 1.20371e-35, -4.76837e-07 )
+scale = Vector2( 0.170625, 0.15375 )
+frames = SubResource( 5 )
+animation = "fire2"
+frame = 2
+playing = true
+[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

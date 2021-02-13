@@ -39,7 +39,6 @@ func _physics_process(delta):
 		for i in range(get_slide_count()):
 			if "Player" in get_slide_collision(i).collider.name:
 				get_slide_collision(i).collider.damage(1)
-
 	if is_on_wall():
 		direction = direction * -1
 		$RayCast2D.position.x *= -1

@@ -1,0 +1,118 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Objects/Alien.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/milatary/military1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/milatary/military11.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/milatary/military12.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/milatary/military2.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/enemyLine/Explosion_2.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/milatary/military10.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/milatary/military4.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/milatary/military5.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/milatary/military8.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/milatary/military9.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/milatary/military6.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/milatary/military3.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/milatary/military0.png" type="Texture" id=14]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 96, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 192, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 288, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 384, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 480, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 576, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 672, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 768, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 864, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 960, 0, 96, 96 )
+
+[sub_resource type="SpriteFrames" id=24]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "run",
+"speed": 6.5
+} ]
+
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 57.8534, 57.3674 )
+
+[node name="military" type="KinematicBody2D"]
+position = Vector2( -1.50739, 1.3176 )
+scale = Vector2( 0.6, 0.6 )
+collision_layer = 4
+script = ExtResource( 1 )
+scalepar = Vector2( 0.3, 0.3 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 52.5868, -0.0956421 )
+scale = Vector2( 5, 1 )
+enabled = true
+cast_to = Vector2( 0, 65 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -4.24057, -8.29648 )
+scale = Vector2( 3.64592, 2.68435 )
+frames = SubResource( 24 )
+animation = "run"
+frame = 6
+speed_scale = 2.0
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 9.15431, 6.02711 )
+shape = SubResource( 25 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

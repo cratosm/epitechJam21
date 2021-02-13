@@ -39,7 +39,7 @@ func _on_shoot_body_entered(body):
 		body.dead(1)
 	if "Trex" in body.name:
 		body.dead(1)
-	if "MonsterBall" in body.name:
+	if "military" in body.name:
 		body.dead(1)
 	if "BossMageFirst" in body.name:
 		body.dead(1)
