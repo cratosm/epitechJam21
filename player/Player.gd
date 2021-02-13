@@ -180,7 +180,7 @@ func manageJump():#JUMP
 func _physics_process(delta):#MAIN
 	if (is_dead == true):
 		return
-	FuturMode()
+	#FuturMode()
 	motion.y += GRAVITY
 	posTarget = $Position2D
 	manageRun()
