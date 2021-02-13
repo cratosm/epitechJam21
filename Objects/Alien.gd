@@ -5,7 +5,7 @@ export(int) var speed = 30
 const FLOOR = Vector2(0, -1)
 
 export(int) var hp = 1
-
+export(Vector2) var scalepar = Vector2(3.5, 3.5)
 var velocity = Vector2()
 
 var direction = 1
@@ -20,7 +20,7 @@ func dead(damage):
 	if hp <= 0:
 		is_dead = true
 		velocity = Vector2(0,0)
-		scale = Vector2(3.5, 3.5)
+		scale = scalepar
 		$AnimatedSprite.play("die")
 		$CollisionShape2D.set_deferred("disabled", true)
 		$Timer.start()

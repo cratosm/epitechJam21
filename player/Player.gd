@@ -48,6 +48,26 @@ var max_speed = 290
 var monkey = false
 var is_dead = false
 var Futur = false
+var modern = false
+
+func ModernMode():
+	if (modern == true):
+		return
+	Jump = "Jump"
+	Fall = "Fall"
+	Die = "Die"
+	Dead = "Dead"
+	Run = "Run"
+	Idle = "Idle"
+	Idle_and_Shoot = "Idle and Shoot"
+	Run_and_Shoot = "Idle and Shoot"
+	Jump_and_Shoot = "Idle and Shoot"
+	$CollisionShape2D.set_deferred("disabled", false)
+	$CollisionShape2DFutur.set_deferred("disabled", true)
+	$CollisionShape2DMonkey.set_deferred("disabled", true)
+	monkey = false
+	Futur = false
+	modern = true
 
 func FuturMode():
 	if (Futur == true):
@@ -65,6 +85,7 @@ func FuturMode():
 	$CollisionShape2DMonkey.set_deferred("disabled", true)
 	monkey = false
 	Futur = true
+	modern = false
 
 func monkeyMode():
 	if (monkey == true):
@@ -83,6 +104,7 @@ func monkeyMode():
 	$Position2D.position.y -= 13
 	monkey = true
 	Futur = false
+	modern = false
 	
 func manageShoot():
 	if fireball_power == 1:
@@ -178,10 +200,20 @@ func manageJump():#JUMP
 		buffer = ""
 	pass
 
+func setPlayer():
+	if (get_parent().get_child(0).name == "past"):
+		monkeyMode()
+	if (get_parent().get_child(0).name == "futur"):
+		FuturMode()
+	if (get_parent().get_child(0).name == "modern"):
+		ModernMode()
+	
+	
+
 func _physics_process(delta):#MAIN
 	if (is_dead == true):
 		return
-	FuturMode()
+	setPlayer()
 	motion.y += GRAVITY
 	posTarget = $Position2D
 	manageRun()

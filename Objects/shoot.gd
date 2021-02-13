@@ -33,11 +33,11 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_shoot_body_entered(body):
 	$AnimatedSprite.play(die)
-	if "IceWalker" in body.name:
+	if "Dinausore" in body.name:
 		body.dead(1)
 	if "Alien" in body.name:
 		body.dead(1)
-	if "drakeIce" in body.name:
+	if "Trex" in body.name:
 		body.dead(1)
 	if "MonsterBall" in body.name:
 		body.dead(1)

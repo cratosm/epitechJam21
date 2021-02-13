@@ -1,0 +1,136 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Objects/Alien.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/enemys/dinosaure.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/enemyLine/Explosion_2.png" type="Texture" id=6]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 96, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 192, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 288, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 384, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 480, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 576, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 672, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 768, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 864, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 960, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 16
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 152, 102 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 16
+atlas = ExtResource( 2 )
+region = Rect2( 152, 0, 152, 102 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 16
+atlas = ExtResource( 2 )
+region = Rect2( 304, 0, 152, 102 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 16
+atlas = ExtResource( 2 )
+region = Rect2( 0, 102, 152, 102 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 16
+atlas = ExtResource( 2 )
+region = Rect2( 152, 102, 152, 102 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 16
+atlas = ExtResource( 2 )
+region = Rect2( 304, 102, 152, 102 )
+
+[sub_resource type="SpriteFrames" id=18]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "die",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 57.8534, 57.3674 )
+
+[node name="Dinausore" type="KinematicBody2D"]
+position = Vector2( -1.50739, 1.3176 )
+scale = Vector2( 0.6, 0.6 )
+script = ExtResource( 1 )
+scalepar = Vector2( 1, 1 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 52.5868, -0.0956421 )
+scale = Vector2( 5, 1 )
+enabled = true
+cast_to = Vector2( 0, 65 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 1.57476, -2.5967 )
+scale = Vector2( 1.37703, 1.25479 )
+frames = SubResource( 18 )
+animation = "run"
+frame = 5
+speed_scale = 2.0
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 9.15431, 6.02711 )
+shape = SubResource( 19 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
