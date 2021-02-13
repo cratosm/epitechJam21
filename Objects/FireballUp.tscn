@@ -14,6 +14,11 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "fireFutur",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 11 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "fireMonkey",
@@ -33,7 +38,7 @@ radius = 8.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.218, 0.202 )
 frames = SubResource( 1 )
-animation = "fireMonkey"
+animation = "fireFutur"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 8, 0 )

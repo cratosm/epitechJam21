@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Objects/shoot.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/fireballNormal/nes-sprite-png-7.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Sprites/monkey/banana3.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/monkey/banana6.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/monkey/banana1.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Futur/FireFuture.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Futur/FireFuture1.png" type="Texture" id=10]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -19,6 +21,11 @@ region = Rect2( 168, 208, 24, 16 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "fireFutur",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "fireMonkey",
@@ -48,7 +55,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -7, 0 )
 frames = SubResource( 3 )
-animation = "fireMonkey"
+animation = "fireFutur"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 4 )
