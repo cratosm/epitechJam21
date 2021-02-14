@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/lvl2_tileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Objects/coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/Portal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/ParallaxBackground2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/lvl3.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4573.87, 66.9103 )
@@ -80,6 +81,7 @@ hp = 3
 
 [node name="Portal" parent="." instance=ExtResource( 6 )]
 position = Vector2( 3728.52, -37.0124 )
+target_scene = ExtResource( 8 )
 
 [node name="end" type="StaticBody2D" parent="."]
 position = Vector2( 86.0999, 559.466 )
