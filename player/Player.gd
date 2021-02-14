@@ -9,7 +9,7 @@ export(int) var score = 0
 const MAX_SPEED = 500
 const ACCELERATION = 50
 #JUMP
-const JUMP = -450
+var JUMP = -450
 var Jumps = 1#(+1)
 #MOVE
 var motion = Vector2()
@@ -68,6 +68,8 @@ func ModernMode():
 	monkey = false
 	Futur = false
 	modern = true
+	max_speed = 450
+	JUMP = -450	
 
 func FuturMode():
 	if (Futur == true):
@@ -86,6 +88,8 @@ func FuturMode():
 	monkey = false
 	Futur = true
 	modern = false
+	max_speed = 290
+	JUMP = -600
 
 func monkeyMode():
 	if (monkey == true):
@@ -105,6 +109,8 @@ func monkeyMode():
 	monkey = true
 	Futur = false
 	modern = false
+	max_speed = 290
+	JUMP = -450
 	
 func manageShoot():
 	if fireball_power == 1:
@@ -130,6 +136,7 @@ func damage(dmg):#TAKE DMG
 		is_dead = true
 		motion = Vector2(0, 0)
 		$Sprite.play(Die)
+		get_tree().change_scene("res://Scenes/lvl1.tscn")
 	else:
 		$Sprite.play(Fall)
 	pass
@@ -216,7 +223,7 @@ func _physics_process(delta):#MAIN
 	if get_slide_count() > 0:
 		for i in range(get_slide_count()):
 			if "end" in get_slide_collision(i).collider.name:
-				print("ed")
+					get_tree().change_scene("res://Scenes/lvl1.tscn")
 	setPlayer()
 	motion.y += GRAVITY
 	posTarget = $Position2D
